@@ -1,0 +1,73 @@
+# functions.py
+# Austen Henry
+
+
+# Prints m strings n times
+def print_string(m, n):
+    print((str(m)+"\n") * n)
+
+
+# Takes two arguments and returns the biggest.
+def biggest(x, y):
+    return x if x >= y else y
+
+
+# Mirrors an integer and returns it.
+def mirror(number):
+    return str(number)[::-1]
+
+
+# Swaps the first and last characters in a number.
+def swap_last_first(number):
+    return "".join([str(number)[-1], str(number)[1:-1], str(number)[0]])
+
+
+# Checks to see if a number is a palindrome.
+def is_palindrome(num):
+    return True if [x for x in range(0,len(str(num))) if str(num)[int(x)] == str(num)[::-1][int(x)]] else False
+
+
+# Calculates the factorial of a number.
+def factorial(number):
+    return (number*factorial(number-1)) if number != 0 else 1
+
+
+# Returns the sum of all the numbers in a list.
+def sum_list(ls):
+    return ls[0]+sum_list(ls[1: len(ls)]) if len(ls) > 0 else 0
+
+
+# Takes unlimited arguments and returns the smallest one:
+def smallest(*args):
+    return smallest(*args[1:] if args[0] > args[1] else (args[2:] + (args[0],)) ) if len(args) > 1 else args[0]
+
+
+# Takes two lists and returns a list of unique values from both.
+def union(list1, list2):
+    return [x for x in list1 for y in list2 if x == y]
+
+
+# Makes a list of size odd numbers starting at start. If you start at an even number it will add 1 to it to make it odd.
+def make_odds(start, size):
+    return [x for x in range(start, start + size*2, 2)] if start % 2 != 0 else make_odds(start+1, size)
+
+
+# Calculates the nth fib sequence number:
+def fib(n):
+    return 0 if n == 0 else 1 if n == 1 else fib(n-2) + fib(n-1)
+
+
+# Here are some calls to make it easier.
+print_string("Austen", 10)
+print(biggest(10, 1000))
+print(mirror(16586))
+print(swap_last_first(1005))
+print(is_palindrome(123454321))
+print(is_palindrome(1234))
+print(factorial(10))
+print(sum_list([10, 20, 30, 40]))
+print(smallest(1, 5, 10, 40, -10, -100, 0))
+print(union([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 3, 5, 7, 9]))
+print(make_odds(11, 5))
+print(make_odds(10, 5))
+print(fib(11))
