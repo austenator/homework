@@ -1,0 +1,25 @@
+# loan.py
+# Austen Henry
+
+principal = input("Please type the amount of money borrowed, a positive int (no commas):")
+years = input("Please type the number of years used to repay the loan, a positive int: ")
+interest = input("Please type the annual interest rate charged on the principal, a fraction. \
+(e.g., 8.5% is typed as 0.085):")
+
+
+def get_payment(principal, years, interest):
+    part = (1+interest)**years
+    return (part * principal * interest) / (part - 1)
+
+
+def get_monthly_payment(principal, years, interest):
+    return get_payment(principal, years, interest) / 12
+
+
+def get_total(principal, years, interest):
+    return get_payment(principal, years, interest) * years
+
+
+print "The annual payment is: $" + str(get_payment(principal, years, interest))
+print "The monthly payment is: $" + str(get_monthly_payment(principal, years, interest))
+print "The total paid over the life of the loan is: $" + str(get_total(principal, years, interest))
